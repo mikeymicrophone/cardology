@@ -18,22 +18,22 @@
     <% end %>
   
     <%= content_tag :div, :class => "panel #{@birthday.personality_card ? '' : 'flip'} personality" do %>
-      <%= card_reading_pane @birthday.personality_card, :personality, marketing_text('card_previews', 'personality', 'header'), nil do %>
+      <%= card_reading_pane @birthday.personality_card, :personality, marketing_text('card_previews', @querent, 'personality', 'header'), nil do %>
         <% if @birthday == @member.birthday %>
           <% if @member.birthday.astrological_sign.is_cusp? %>
-            <%= link_to marketing_text('card_previews', 'personality', 'button'), member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true %>
+            <%= link_to marketing_text('card_previews', @querent, 'personality', 'button'), member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true %>
           <% end %>
         <% end %>
       <% end %>
     
       <% if @birthday.zodiac_for_birthday.is_cusp? %>
         <%= div_for @birthday, :personality_card_for, :class => "card_reading_pane pane back" do %>
-          <%= content_tag :header, marketing_text('card_previews', 'personality', 'header') %>
-          <%= marketing_text('card_previews', 'personality_card', 'cusp_picker') %><br>
+          <%= content_tag :header, marketing_text('card_previews', @querent, 'personality', 'header') %>
+          <%= marketing_text('card_previews', @querent, 'personality_card', 'cusp_picker') %><br>
           <div id="zodiac_options">
             <%= zodiac_picker_for @member, @birthday %>
           </div>
-          <%= marketing_text('card_previews', 'personality_card', 'cusp_unsure') %> <%= mail_to marketing_text('card_previews', 'personality_card', 'email'), 'email us', :id => 'zodiac_email' %> <%= marketing_text('card_previews', 'personality_card', 'cusp_unsure_two') %>
+          <%= marketing_text('card_previews', @querent, 'personality_card', 'cusp_unsure') %> <%= mail_to marketing_text('card_previews', @querent, 'personality_card', 'email'), 'email us', :id => 'zodiac_email' %> <%= marketing_text('card_previews', @querent, 'personality_card', 'cusp_unsure_two') %>
         <% end %>
       <% end %>
     <% end %>
@@ -47,24 +47,24 @@
   
     <%= clearboth %>
     <%= content_tag :div, :class => "panel yearly" do %>
-      <%= card_reading_pane @birthday.card_for_this_year, :yearly, marketing_text('card_previews', 'yearly', 'header_current'), marketing_text('card_previews', 'yearly', 'subheader') do %>
-        <%= link_to marketing_text('card_previews', 'yearly', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
+      <%= card_reading_pane @birthday.card_for_this_year, :yearly, marketing_text('card_previews', @querent, 'yearly', 'header'), marketing_text('card_previews', @querent, 'yearly', 'subheader') do %>
+        <%= link_to marketing_text('card_previews', @querent, 'yearly', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
       <% end %>
   
-      <%= card_reading_pane @birthday.card_for_last_year, :yearly, marketing_text('card_previews', 'yearly', 'header_last'), marketing_text('card_previews', 'yearly', 'subheader'), 'back' do %>
-        <%= link_to marketing_text('card_previews', 'yearly', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
+      <%= card_reading_pane @birthday.card_for_last_year, :yearly, marketing_text('card_previews', @querent, 'yearly', 'header_last'), marketing_text('card_previews', @querent, 'yearly', 'subheader'), 'back' do %>
+        <%= link_to marketing_text('card_previews', @querent, 'yearly', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
       <% end %>
     <% end %>
   
     <%= content_tag :div, :class => "panel planetary" do %>
-      <%= card_reading_pane @birthday.card_for_this_planet, :yearly, marketing_text('card_previews', 'planetary', 'header_current'), marketing_text('card_previews', 'planetary', 'subheader') do %>
-        <%= link_to marketing_text('card_previews', 'yearly', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
+      <%= card_reading_pane @birthday.card_for_this_planet, :yearly, marketing_text('card_previews', @querent, 'planetary', 'header'), marketing_text('card_previews', @querent, 'planetary', 'subheader') do %>
+        <%= link_to marketing_text('card_previews', @querent, 'planetary', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
       
-      <%= card_reading_pane @birthday.card_for_last_planet, :yearly, marketing_text('card_previews', 'planetary', 'header_last'), marketing_text('card_previews', 'planetary', 'subheader'), 'back' do %>
-        <%= link_to marketing_text('card_previews', 'planetary', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
+      <%= card_reading_pane @birthday.card_for_last_planet, :yearly, marketing_text('card_previews', @querent, 'planetary', 'header_last'), marketing_text('card_previews', @querent, 'planetary', 'subheader'), 'back' do %>
+        <%= link_to marketing_text('card_previews', @querent, 'planetary', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
     <% end %>
   <% end %>

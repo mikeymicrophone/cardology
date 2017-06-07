@@ -52,7 +52,7 @@ card_previews:
       button_next: "See Your Next Card"
   guest:
     personality:
-      header: "Your Personality Card"
+      header: "Their Personality Card"
       description: |
         Your Personality Card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world. 
 
@@ -64,7 +64,7 @@ card_previews:
       button: "Jump Over the Cusp"
     yearly:
       header_last: "Last Yearly Card"
-      header: "Your Yearly Card"
+      header: "Their Yearly Card"
       header_next: "Next Yearly Card"
       subheader: "This card represents the main theme of your year. Your year starts from your last birthday until your next birthday."
       description: |
@@ -76,16 +76,16 @@ card_previews:
       button_next: "See Next Year's Card"
     planetary:
       header_last: "Previous 52-Day Card"
-      header: "Your 52-Day Card"
+      header: "Their 52-Day Card"
       header_next: "Next 52-Day Card"
       subheader: "This card represents the current period of your year. It indicates a specific energy pattern in play for this 52-day cycle."
       description: |
           During our year, from Birthday to Birthday, we move through seven specific cycles of influence. Each cycle in the year is 52 days long. 
 
           <strong class='joining_players_club'>Join the Players Club</strong> to find out which card is in play for you right now during this cycle, so you can clarify what’s happening for you right now.  It's FREE to join.
-      button_last: "See Your Previous Card"
-      button_current: "See Your Current Card"
-      button_next: "See Your Next Card"
+      button_last: "See Their Previous Card"
+      button_current: "See Their Current Card"
+      button_next: "See Their Next Card"
       
 
 member_form:
