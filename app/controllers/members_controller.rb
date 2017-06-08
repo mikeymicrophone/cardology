@@ -7,7 +7,7 @@ class MembersController < ApplicationController
       redirect_to root_url
       return
     end
-    
+
     @member = Member.new member_params
     @member.password = Member.generate_password
     @member.password_confirmation = @member.password
@@ -15,7 +15,7 @@ class MembersController < ApplicationController
     sign_in @member
     redirect_to birthday_path @member.birthday, :member_id => @member.id, :scroll_to_top => true
   end
-  
+
   def update
     @member = Member.find params[:id]
     @member.update_attributes member_params
@@ -25,9 +25,9 @@ class MembersController < ApplicationController
         if @member.zodiac_sign.present?
           @alternative_card_location = member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil})
           @link_method = :put
-          @header_text = 'Your Personality Card'
+          @header_text = marketing_text('card_previews', 'your', 'personality', 'header')
           @header_subtitle = ENV['PERSONALITY_CARD_SUBTITLE']
-          @link_text = "Change my Zodiac sign"
+          @link_text = marketing_text('card_previews', 'your', 'personality', 'button_alt')
           @structural_role = 'personality_card_for'
           @birthday = @member.birthday
           @birthday.zodiac_sign = @member.zodiac_sign&.intern
@@ -41,11 +41,11 @@ class MembersController < ApplicationController
       end
     end
   end
-  
+
   private
-  
+
   def member_params
     params.require(:member).permit(:birthday_id, :name, :email, :lookup_id, :zodiac_sign)
   end
-  
+
 end

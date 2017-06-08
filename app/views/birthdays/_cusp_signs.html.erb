@@ -1,6 +1,6 @@
-<%= content_tag :header, 'Your Personality Card' %>
-Your birthday is on an astrological cusp. To correctly determine your Personality Card, we need to know which is your Western Astrological sign. If you know it, please click it here:<br>
+<%= content_tag :header, marketing_text('card_previews', 'your', 'personality', 'header') %>
+<%= marketing_text('card_previews', 'your', 'personality', 'cusp_picker') %><br>
 <div id="zodiac_options">
   <%= zodiac_picker_for @member, @birthday %>
 </div>
-If you are unsure of your Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with your time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up your Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
+<%= marketing_text('card_previews', 'your', 'personality', 'cusp_unsure') %> <%= mail_to marketing_text('card_previews', 'your', 'personality', 'email'), 'email us', :id => 'zodiac_email' %> <%= marketing_text('card_previews', 'your', 'personality', 'cusp_unsure_two') %>

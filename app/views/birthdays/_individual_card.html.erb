@@ -9,4 +9,4 @@
 <%= div_for card, :explication_of do %>
   <%= mark_up card_explanation %>
 <% end %>
-<%= link_to marketing_text('card_previews', 'member', 'personality', 'button'), 'javascript: null', :remote => true, :class => 'flip_card trailing call_to_action lunar_navigation' %>
+<%= link_to marketing_text('card_previews', @querent, 'personality', 'button'), 'javascript: null', :remote => true, :class => 'flip_card trailing call_to_action lunar_navigation'  %>
