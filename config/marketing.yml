@@ -22,6 +22,8 @@ additional_lookup:
 
 card_previews:
   your:
+    birth:
+      header: "Your Birth Card"
     personality:
       header: "Your Personality Card"
       description: |

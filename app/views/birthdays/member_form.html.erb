@@ -3,15 +3,15 @@
 <%= content_tag :div, :class => 'member_form_container' do %>
   <%= content_tag :div, :class => 'reading_display_container' do %>
     <%= div_for @birthday, 'data-birthday_id' => @birthday.id, 'data-lookup_id' => @lookup.id do %>
-      <%= card_reading_pane @birthday.birth_card, :birth, "Your Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" %>
+      <%= card_reading_pane @birthday.birth_card, :birth, marketing_text('card_previews', 'your', 'birth', 'header'), "For #{@birthday.birthdate.strftime("%b %e %Y")}" %>
       <%= clearboth %>
-      
+
       <%= card_preview :personality %>
       <%= clearboth %>
-    
+
       <%= card_preview :yearly %>
       <%= clearboth %>
-    
+
       <%= card_preview :planetary %>
       <%= clearboth %>
     <% end %>
