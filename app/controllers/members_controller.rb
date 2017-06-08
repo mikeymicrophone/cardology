@@ -25,9 +25,9 @@ class MembersController < ApplicationController
         if @member.zodiac_sign.present?
           @alternative_card_location = member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil})
           @link_method = :put
-          @header_text = marketing_text('card_previews', 'your', 'personality', 'header')
+          @header_text = view_context.marketing_text('card_previews', 'your', 'personality', 'header')
           @header_subtitle = ENV['PERSONALITY_CARD_SUBTITLE']
-          @link_text = marketing_text('card_previews', 'your', 'personality', 'button_alt')
+          @link_text = view_context.marketing_text('card_previews', 'your', 'personality', 'button_alt')
           @structural_role = 'personality_card_for'
           @birthday = @member.birthday
           @birthday.zodiac_sign = @member.zodiac_sign&.intern

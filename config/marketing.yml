@@ -12,6 +12,13 @@ returning_players:
   password_name: "Password"
   remember_name: "Remember me"
   reset_name: "Reset Password"
+  password_wrong: |
+    Oops, it looks like you're entering the wrong password.
+    The temporary password was emailed to you when you signed up.
+    Please check your email for the password.
+additional_lookup:
+  subheader: "Look Up Another Birth Card"
+  instructions: "Enter the Birthdate"
 
 card_previews:
   your:

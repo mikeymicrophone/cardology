@@ -27,15 +27,15 @@ class BirthdaysController < ApplicationController
     @personality_card_explanation ||= @personality_card&.interpretations&.where(:reading => :birth)&.last&.explanation
     @scroll_to_top = params[:scroll_to_top]
   end
-
+  
   def replace_card
     @birthday = Birthday.find params[:id]
     @card = case params[:reading_type]
     when 'personality'
       @alternative_card_location = replace_card_birthday_path(current_member.birthday, :reading_type => 'personality')
-      @header_text = 'Your Personality Card'
+      @header_text = view_context.marketing_text('card_previews', 'your', 'personality', 'header')
       @header_subtitle = ENV['PERSONALITY_CARD_SUBTITLE']
-      @link_text = "Jump Over the Cusp"
+      @link_text = view_context.marketing_text('card_previews', 'your', 'personality', 'button')
       @structural_role = 'personality_card_for'
       @cusp = @birthday.zodiac_for_birthday
       if @cusp.leader == current_member.zodiac_sign.intern
@@ -59,8 +59,8 @@ class BirthdaysController < ApplicationController
   def new
     @date = rand((50.years.ago)..20.years.ago)
     if current_member
-      @goal = 'Look Up Another Birth Card'
-      @instructions = 'Enter the Birthdate'
+      @goal = view_context.marketing_text('additional_lookup', 'subheader')
+      @instructions = view_context.marketing_text('additional_lookup', 'instructions')
     else
       @goal = view_context.marketing_text('new_players', 'subheader')
       @instructions = view_context.marketing_text('new_players', 'instructions')
@@ -88,7 +88,7 @@ class BirthdaysController < ApplicationController
     @goal = view_context.marketing_text('new_players', 'subheader')
     @instructions = view_context.marketing_text('new_players', 'instructions')
     @email = params[:member][:email]
-    @password_explanation = "Oops, it looks like you're entering the wrong password.<br>The temporary password was emailed to you when you signed up.<br>Please check your email for the password.".html_safe
+    @password_explanation = view_context.marketing_text('returning_players', 'password_wrong').html_safe
     render 'new.html.erb'
   end
 
@@ -96,7 +96,7 @@ class BirthdaysController < ApplicationController
     @birthday = Birthday.find params[:id]
     @birthday.zodiac_sign = params[:zodiac_sign].intern
     @card = @birthday.personality_card
-    @header_text = 'Their Personality Card'
+    @header_text = view_context.marketing_text('card_previews', 'their', 'personality', 'header')
     @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
     render :template => 'birthdays/replace_card.js.erb'
   end
