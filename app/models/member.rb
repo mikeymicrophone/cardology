@@ -22,14 +22,19 @@ class Member < ApplicationRecord
   paginates_per 52
   
   def add_to_players_club_campaign
-    client = GetResponse::Api.new
-    traits = {
-      :name => name,
-      :email => email,
-      :campaign => {:campaignId => ENV['GETRESPONSE_PLAYERS_CLUB_ID']},
-      :customFieldValues => [{:customFieldId => ENV['GETRESPONSE_BIRTHDATE_ID'], :value => [birthday.birthdate_string]}]
-    }
-    client.contacts.create traits
+    subscriber_info = {'first_name' => name, 'email' => email}
+    
+    uri = URI("https://simplero.com/api/v1/lists/#{ENV['SIMPLERO_CAMPAIGN_ID']}/subscribe.json")
+    
+    header = {'User Agent' => ENV['SIMPLERO_USER_AGENT']}
+    
+    https = Net::HTTPS.new(uri.host, uri.port)
+    request = Net::HTTPS::Post.new(uri.request_uri, header)
+    request.body = subscriber_info.to_json
+    
+    request.basic_auth ENV['SIMPLERO_API_KEY'], ''
+    
+    response = https.request(request)
   end
   
   def remove_from_players_club_campaign
