@@ -22,19 +22,20 @@ class Member < ApplicationRecord
   paginates_per 52
   
   def add_to_players_club_campaign
-    subscriber_info = {'first_name' => name, 'email' => email}
+    subscriber_info = {:email => email}
     
     uri = URI("https://simplero.com/api/v1/lists/#{ENV['SIMPLERO_CAMPAIGN_ID']}/subscribe.json")
     
-    header = {'User Agent' => ENV['SIMPLERO_USER_AGENT']}
+    header = {'User-Agent' => ENV['SIMPLERO_USER_AGENT']}
     
-    https = Net::HTTPS.new(uri.host, uri.port)
-    request = Net::HTTPS::Post.new(uri.request_uri, header)
-    request.body = subscriber_info.to_json
+    Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |https|
+      request = Net::HTTP::Post.new uri.request_uri, header
+      request.set_form_data subscriber_info
     
-    request.basic_auth ENV['SIMPLERO_API_KEY'], ''
+      request.basic_auth ENV['SIMPLERO_API_KEY'], ''
     
-    response = https.request(request)
+      https.request request
+    end
   end
   
   def remove_from_players_club_campaign
