@@ -34,18 +34,18 @@ class Card < ApplicationRecord
   end
   
   def self.card_back_image
-    find_by(:face => Face.find_by(:name => 'Card Back'))&.image
+    find_by(:face => Face.find_by(:name => 'Card Back'))&.image&.url
   end
   
   def self.personality_card_back_image
-    find_by(:face => Face.find_by(:name => 'Personality Card Back'))&.image
+    find_by(:face => Face.find_by(:name => 'Personality Card Back'))&.image&.url
   end
   
   def self.yearly_card_back_image
-    find_by(:face => Face.find_by(:name => 'Yearly Card Back'))&.image
+    find_by(:face => Face.find_by(:name => 'Yearly Card Back'))&.image&.url
   end
   
   def self.planetary_card_back_image
-    find_by(:face => Face.find_by(:name => 'Planetary Card Back'))&.image
+    find_by(:face => Face.find_by(:name => 'Planetary Card Back'))&.image&.url
   end
 end
