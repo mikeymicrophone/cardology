@@ -32,6 +32,7 @@ gem 'js-routes'
 gem 'momentjs-rails'
 gem 'get_response'
 gem 'get_response_api', :github => 'mikeymicrophone/get_response_api'
+gem 'bootsnap'
 
 group :development, :test do
   gem 'byebug', platform: :mri
