@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.9'
 
-gem 'rails', '5.1.5'
+gem 'rails', '5.2.4.4'
 gem 'pg'
 gem 'puma'#, '~> 3.0'
 gem 'sass-rails'#, '~> 5.0'
@@ -14,7 +14,7 @@ gem 'jbuilder'#, '~> 2.5'
 
 gem 'record_tag_helper'
 gem 'redcarpet'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '2.1.0'
 gem 'fog-aws'
 gem 'devise'
 gem 'randumb'
@@ -36,7 +36,7 @@ gem 'get_response_api', :github => 'mikeymicrophone/get_response_api'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
-  gem 'capybara'
+  # gem 'capybara'
   gem 'fabrication'
   gem 'faker'
 end
