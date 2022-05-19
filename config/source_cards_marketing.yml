@@ -12,7 +12,7 @@ card_reading:
     instructions: "Click the Card to learn more."
   personality_card:
     identification: "Your Personality Card is the"
-    symbolizing: "This ruling pattern symbolizes the identity that may define you."
+    symbolizing: "This pattern symbolizes the social identity that may rule your behavior."
     instructions: "Click the Card to learn more."
     cusp: "Your birthday is on an astrological cusp. If you know your sign, click it below. If you're unsure, flip the next card and check both options from your Birthday page."
   birthday_card:
