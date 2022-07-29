@@ -22,6 +22,7 @@ gem 'jquery-validation-rails'
 gem 'cancancan'
 gem 'jquery-scrollto-rails', :github => 'fishpercolator/jquery-scrollto-rails', :ref => '0c6aa0e0a0ec72f2c54bbb3833a7a48cf95637bf'
 gem 'kaminari'
+gem "simple_calendar", "~> 2.4"
 gem 'memoist'
 gem 'attr_default'
 gem 'rollbar'

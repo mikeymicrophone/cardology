@@ -21,6 +21,16 @@ class Member < ApplicationRecord
   
   paginates_per 52
   
+  def celestials_transitions
+    quartets = []
+    celestials.each do |celestial|
+      celestial.birthday.triples_for_year.each do |date, planet, card|
+        quartets << [date, planet, card, celestial]
+      end
+    end
+    quartets
+  end
+  
   def add_to_players_club_campaign
     client = GetResponse::Api.new
     traits = {
