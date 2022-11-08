@@ -2,7 +2,7 @@ class Card < ApplicationRecord
   belongs_to :suit
   belongs_to :face
   has_many :interpretations
-  mount_uploader :image, CardUploader
+  # mount_uploader :image, CardUploader
   
   def self.ordered_deck
     deck = []
