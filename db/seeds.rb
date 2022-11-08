@@ -59,3 +59,32 @@ end
 
 seeder = CardologySeeder.new
 seeder.populate!
+
+suits =  Suit.all
+suits.each do |suit|
+  cards = Card.where(suit_id: suit.id)
+  if cards.present?
+    cards.order(:face_id).each do |card|
+      if suit.id == 5
+        if card.face_id == 14
+          card.update(image: "Joker_Red.jpg")
+        elsif card.face_id == 15
+          card.update(image: "blueorangeround-lowrez.jpg")
+        else
+          card.update(image: "blueround-lowrez.jpg")
+        end
+      else
+        if card.face_id <= 10
+          card.update(image: "#{suit.name.singularize}_#{card.face_id}.jpg")
+        elsif card.face_id == 11
+          card.update(image: "#{suit.name.singularize}_Jack.jpg")
+        elsif card.face_id == 12
+          card.update(image: "#{suit.name.singularize}_Queen.jpg")
+        elsif card.face_id == 13
+          card.update(image: "#{suit.name.singularize}_King.jpg")
+        end
+      end
+    end
+  end
+end
+
