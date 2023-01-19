@@ -78,7 +78,7 @@ new_players:
   button: "Go"
 returning_players:
   header: "Returning Players"
-  subheader: "Login to get back in the game:"
+  subheader: "The Players Clubs Has Moved To The Source Cards"
   instructions: "A temporary password was emailed to you."
   password_hint: "The temporary password is 'ENV['INITIAL_PASSWORD']'"
   button: "Get Back In The Game"
