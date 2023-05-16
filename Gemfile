@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.7.5'
 
-gem 'rails', '5.1.5'
+gem 'rails', '5.2.6'
 gem 'pg'
 gem 'puma'#, '~> 3.0'
 gem 'sass-rails'#, '~> 5.0'
@@ -33,6 +33,7 @@ gem 'js-routes', '1.4.3'
 gem 'momentjs-rails'
 gem 'get_response'
 gem 'get_response_api', :github => 'mikeymicrophone/get_response_api'
+gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri

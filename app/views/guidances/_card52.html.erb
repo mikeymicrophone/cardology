@@ -17,7 +17,7 @@
       <%= @planet %>
       <%="  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
       <p class= "pad">
-        <%= image_tag @card.image,style: "width: 150px; border-radius: 5.5px;" %>
+        <%= image_tag @card.image.url,style: "width: 150px; border-radius: 5.5px;" %>
       </p>
   </div>
    <%@header = 'yearly'%>

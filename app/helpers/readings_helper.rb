@@ -11,7 +11,7 @@ module ReadingsHelper
             div_for(card, :name_of) do
               card.name
             end +
-            image_tag(card.image, :class => 'card_face_image') +
+            image_tag(card.image.url, :class => 'card_face_image') +
             div_for(Card.last, :opportunities_on) do
               if [:yearly, :planetary].include? reading
                 "#{marketing_text 'coaching', 'question'} #{link_to(marketing_text('coaching', 'answer'), ENV['COACHING_PURCHASE_LINK'], :target => '_blank')}".html_safe
@@ -40,7 +40,7 @@ module ReadingsHelper
         div_for(card, :name_of) do
           card.name
         end +
-        image_tag(card.image, :class => 'card_face_image') +
+        image_tag(card.image.url, :class => 'card_face_image') +
         div_for(Card.last, :opportunities_on) do
           "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
         end
@@ -80,7 +80,7 @@ module ReadingsHelper
           div_for(card, :name_of) do
             card.name
           end +
-          image_tag(card.image, :class => 'card_face_image_gui', style:"width:85px") +
+          image_tag(card.image.url, :class => 'card_face_image_gui', style:"width:85px") +
           div_for(Card.last, :opportunities_on) do
            
           end
