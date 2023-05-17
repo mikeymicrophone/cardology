@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       get 'ids'
     end
   end
-  root :to => 'birthdays#new'
+  root :to => 'birthdays#new',as: "new_birthday"
   resources :birthdays do
     member do
       get :replace_card

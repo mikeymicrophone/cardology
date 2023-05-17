@@ -30,7 +30,7 @@
     
       <div class="back">
         <%= link_to source_card_url(@birth_card), :class => 'nodeco', :target => :blank do %>
-          <%= image_tag @birth_card.image %>
+          <%= image_tag @birth_card.image.url %>
           <div id="birth_card_title_line" class="title_line">
             <%= source_cards_marketing_text 'card_reading', 'birth_card', 'identification' %> <br>
             <%= @birth_card.name %>.<br>

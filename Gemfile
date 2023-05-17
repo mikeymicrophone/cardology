@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.7.5'
 
-gem 'rails', '5.2.6'
+gem 'rails', '6.1.4'
 gem 'pg'
 gem 'puma'#, '~> 3.0'
 gem 'sass-rails'#, '~> 5.0'
@@ -20,7 +20,7 @@ gem 'devise'
 gem 'randumb'
 gem 'jquery-validation-rails'
 gem 'cancancan'
-gem 'jquery-scrollto-rails', :github => 'fishpercolator/jquery-scrollto-rails', :ref => '0c6aa0e0a0ec72f2c54bbb3833a7a48cf95637bf'
+# gem 'jquery-scrollto-rails', :github => 'fishpercolator/jquery-scrollto-rails', :ref => '0c6aa0e0a0ec72f2c54bbb3833a7a48cf95637bf'
 gem 'kaminari'
 gem "simple_calendar", "~> 2.4"
 gem 'memoist'
