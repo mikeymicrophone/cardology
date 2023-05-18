@@ -128,10 +128,10 @@ class BirthdaysController < ApplicationController
     @header_text = 'Their Personality Card'
     @querent = 'acquaintance'
     if params[:source_cards]
-      render :template => 'birthdays/display_card.js.erb'
+      render :template => 'birthdays/display_card'
     else
       @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
-      render :template => 'birthdays/replace_card.js.erb'
+      render :template => 'birthdays/replace_card'
     end
   end
   

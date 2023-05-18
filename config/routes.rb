@@ -36,7 +36,9 @@ Rails.application.routes.draw do
       get 'ids'
     end
   end
-  root :to => 'birthdays#new',as: "new_birthday"
+  unauthenticated do
+    root to: 'birthdays#new', as: :unauthenticated_root
+  end
   resources :birthdays do
     member do
       get :replace_card

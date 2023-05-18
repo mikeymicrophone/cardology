@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.7.5'
 
-gem 'rails', '6.1.4'
+gem 'rails', '7.0.4.3'
 gem 'pg'
 gem 'puma'#, '~> 3.0'
 gem 'sass-rails'#, '~> 5.0'
@@ -11,6 +11,7 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks'#, '~> 5'
 gem 'jbuilder'#, '~> 2.5'
 # gem 'redis', '~> 3.0'
+gem "sprockets-rails"
 
 gem 'record_tag_helper'
 gem 'redcarpet'
@@ -49,5 +50,4 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen'#, '~> 2.0.0'
 end
-
 gem 'owlcarousel-rails','2.2.3.5'
