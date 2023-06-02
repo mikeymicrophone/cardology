@@ -1,8 +1,9 @@
 new_players:
-  header: "Source Card Lookup"
+  header: "Choose Your Birthday"
   header1: "Three Card Reading"
+  header2: " Source Card Reading"
   instructions: |
-    Select Your Birth Date. Then Click Enter.
+    Then Click Enter
   button: "Enter"
   invitation: "Click on each card to read the game of your life."
 

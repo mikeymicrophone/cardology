@@ -19,21 +19,27 @@
   <%@header = 'daily'%>
   <%= render "guidances/carousel_reading" %>
 
-  <%if  params[:day] == "yesterday"%>
-    <div class = "button_daily_card">
-      <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
-    </div>
-  <%elsif params[:day] == "tomorrow"%>
-    <div class = "button_daily_card">
-      <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
-    </div>
+
+  <% unless params[:lookup_card].present?%>
+    <%if  params[:day] == "yesterday"%>
+      <div class = "button_daily_card">
+        <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
+      </div>
+    <%elsif params[:day] == "tomorrow"%>
+      <div class = "button_daily_card">
+        <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
+      </div>
+    <%else%>
+      <div class = "button_daily_card">
+        <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
+      </div>
+    <%end%>
   <%else%>
-    <div class = "button_daily_card">
-      <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
-    </div>
+    <h3 style= "text-align: center;">Want To Keep Reading More Cards?</h3>
+    <%= link_to "Subscribe For Unlimited Lookups", "https://www.thesourcecards.com/purchase/176926-Three-Card-Lookup", target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
   <%end%>
  </div> 
 <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>

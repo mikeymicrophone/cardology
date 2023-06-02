@@ -15,7 +15,9 @@
     <% end %>
   <% end %>
   <%= clearleft %>
-  <%= link_to "Look up another Birthdate  ",request.referrer,:id => 'new_lookup_link', :class => 'lunar_navigation'%>
+  <% unless params[:lookup_card].present?%>
+  <%= link_to "Look up another Birthdate  ", params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards", :id => 'new_lookup_link', :class => 'lunar_navigation', method: :get%>
+  <% end %>
   <%= clearboth %>
   <div class="widget_heading">
         <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header1' %></section>

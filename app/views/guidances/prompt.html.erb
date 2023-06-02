@@ -1,10 +1,10 @@
 <body class = "body">
     <div class="widget_heading">
-      <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
-      <section id="widget_instructions">Enter Your Birthdate. Then Click Go.</section>
+      <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
+      <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'instructions' %></section>
     </div>
 
-  <%= form_for Birthday.new(:date => @date), :url => guidances_show_path do |birthday_form| %>
+  <%= form_for Birthday.new(:date => @date), :url => guidances_show_path(prompt: true) do |birthday_form| %>
     <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
     <div onclick="myFunction()">
     <%= birthday_form.submit marketing_text('new_players', 'button1') %>

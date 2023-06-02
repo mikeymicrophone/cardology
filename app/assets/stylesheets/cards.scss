@@ -129,3 +129,14 @@ img.image_gallery {
   -webkit-transform: rotateX(0) rotateY(0);
           transform: rotateX(0) rotateY(0);
 }
+
+.pane_guidance{
+  display: none !important;
+}
+.panel.flip{
+  .back{
+    .pane_guidance{
+      display: inline-block !important;
+     }
+   }
+}

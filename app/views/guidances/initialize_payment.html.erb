@@ -2,25 +2,24 @@
   <div class="widget_heading">
         <section id="widget_title">Flip Over These Three Cards For Only $3</section>
   </div>
-  <div class="widget_heading">
-        <section id="widget_instructions">1. Your Yearly Theme Card</section>
-        <section id="widget_instructions">2. Your Current Cycle Card</section>
-        <section id="widget_instructions">3. Your Personal Daily Card</section>
-  </div>
+
     <%= render partial: "guidances/payment_modal", locals: { client_token: @client_token } %>
 
     <div style="text-align: center;margin-top: 2%;" >
-    <button onclick="document.getElementById('myModal').style.display='block'" class="claim-button" id="claim-button">Claim you cards</button>
+    <button onclick="document.getElementById('myModal').style.display='block'" class="claim-button" id="claim-button">Claim Your Cards</button>
     </div>
 
     <div  id="guidance_zone" class= "guidance_prompt_media" onclick="myFunction()">
     <div class="prompt_zone" >
+    <div class="prompt_heading"><b>Personal Daily Card </b></div> 
           <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
     </div>
     <div class="prompt_zone" >
+    <div class="prompt_heading"><b>Current 52-Day Card</b></div> 
           <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %>      
     </div>
     <div class="prompt_zone" >
+    <div class="prompt_heading"><b>Yearly Theme Card</b></div> 
           <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %>  
     </div>
   </div>

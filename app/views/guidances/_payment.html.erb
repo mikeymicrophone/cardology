@@ -1,5 +1,6 @@
 
   <%= form_tag guidances_payment_path, id: "payment-form" do %>
+  
   <div id="dropin-container" style></div>
   <%= hidden_field_tag :client_token, @client_token %>
   <%= hidden_field_tag :payment_method_nonce, id: "payment_method_nonce" %>
@@ -17,20 +18,48 @@
 
   braintree.dropin.create({
     authorization: clientToken,
-    container: '#dropin-container'
+    container: '#dropin-container',
+    paypal: {
+      flow: 'checkout',
+      amount: '3.00',
+      currency: 'USD'
+    }
   }, function (createErr, instance) {
+    if (createErr) {
+      alert('Drop-in UI creation error: ' + createErr);
+      return;
+    }
+
     document.getElementById('pay-button').addEventListener('click', function () {
       spinnerContainer.style.display = 'flex';
       instance.requestPaymentMethod(function (err, payload) {
-      $.ajax({
-        url: '/guidances/payment',
-        type: 'POST',
-        contentType: 'application/json',
-        dataType: 'script',
-        data: JSON.stringify({ nonce: payload.nonce })
-      });
+        if (err) {
+          alert('Request payment method error: ' + err);
+          stopSpinner();
+          return;
+        }
+
+        $.ajax({
+          url: '/guidances/payment',
+          type: 'POST',
+          contentType: 'application/json',
+          dataType: 'script',
+          data: JSON.stringify({ nonce: payload.nonce }),
+          // success: function (response) {
+          //   alert('Payment Successful')
+          // },
+          error: function (xhr, status, error) {
+            alert('Payment request error! Please try again.');
+            stopSpinner();
+          }
+        });
       });
     });
   });
+
+  function stopSpinner() {
+    spinnerContainer.style.display = 'none';
+  }
 </script>
+
 

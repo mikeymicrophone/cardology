@@ -22,23 +22,26 @@
   </div>
    <%@header = 'yearly'%>
    <%= render "guidances/carousel_reading" %>
-
-  <% if  params[:planet] == "last" %>
-    <div class = "button_daily_card">
-      <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
-      <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
-    </div>
-  <% elsif params[:planet] == "next" %>
-    <div class = "button_daily_card">
-      <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
-      <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
-    </div>
-
-  <% else %>
-    <div class = "button_daily_card">
-      <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
-      <%= link_to "  See Next 52-Day Card  ", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
-    </div>
-  <% end %>
+  <% unless params[:lookup_card].present?%>
+    <% if  params[:planet] == "last" %>
+      <div class = "button_daily_card">
+        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
+      </div>
+    <% elsif params[:planet] == "next" %>
+      <div class = "button_daily_card">
+        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
+      </div>
+    <% else %>
+      <div class = "button_daily_card">
+        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "  See Next 52-Day Card  ", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
+      </div>
+    <% end %>
+  <%else%>
+    <h3 style= "text-align: center;">Want To Keep Reading More Cards?</h3>
+    <%= link_to "Subscribe For Unlimited Lookups", "https://www.thesourcecards.com/purchase/176926-Three-Card-Lookup", target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+  <%end%>
 </div>
 <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>

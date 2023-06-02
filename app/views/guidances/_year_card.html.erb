@@ -17,21 +17,26 @@
     </div>
     <%@header = 'yearly'%>
      <%= render "guidances/carousel_reading" %>
-   <%if  params[:year] == "last"%>
-    <div class = "button_daily_card">
-      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next'),:remote => true ,:class => 'lunar_navigation'%>
-    </div>
-    <%elsif params[:year] == "next"%>
-    <div class = "button_daily_card">
-     <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last'),:remote => true ,:class => 'lunar_navigation'%>
-    </div>
-    <%else%>
+  <% unless params[:lookup_card].present?%>
+    <%if  params[:year] == "last"%>
       <div class = "button_daily_card">
-      <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next'),:remote => true ,:class => 'lunar_navigation'%>
       </div>
-    <%end%>
+      <%elsif params[:year] == "next"%>
+      <div class = "button_daily_card">
+      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last'),:remote => true ,:class => 'lunar_navigation'%>
+      </div>
+      <%else%>
+        <div class = "button_daily_card">
+        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next'),:remote => true ,:class => 'lunar_navigation'%>
+        </div>
+      <%end%>
+  <%else%>
+    <h3 style= "text-align: center;">Want To Keep Reading More Cards?</h3>
+    <%= link_to "Subscribe For Unlimited Lookups", "https://www.thesourcecards.com/purchase/176926-Three-Card-Lookup", target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+  <%end%>
     <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
 </div>

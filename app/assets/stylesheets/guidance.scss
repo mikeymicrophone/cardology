@@ -178,9 +178,6 @@ h2{
     align-items: center;
   }
 
-  .source_cards_card_design {
-    width: 190px;
-  }
   .guidance_show_media{
     display: flex;
     flex-direction: column;
@@ -197,6 +194,10 @@ h2{
       background-color: rgba(255, 255, 255, .93);
       color: black
     }
+    .prompt_heading{
+      font-size: 30px;
+      margin: 10px 2% 6px 2%;
+    }
 
 }
 
@@ -208,9 +209,6 @@ h2{
 
   }
 
-  .source_cards_card_design {
-    width: 190px;
-  }
   .guidance_show_media{
     display: flex;
     flex-direction: column;
@@ -229,6 +227,10 @@ h2{
     background-color: rgba(255, 255, 255, .93);
     color: black
 
+  }
+  .prompt_heading{
+    margin: 10px 2% 6px 2%;
+    font-size: 30px;
   }
 
 }

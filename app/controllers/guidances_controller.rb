@@ -6,7 +6,7 @@ class GuidancesController < ApplicationController
   end
 
   def lookup_cards
-    redirect_to guidances_initialize_payment_path if session[:transaction_token].blank?
+    redirect_to guidances_initialize_payment_path if ENV['transaction_token'].blank?
     @date = rand((50.years.ago)..20.years.ago)
   end
 
@@ -20,7 +20,7 @@ class GuidancesController < ApplicationController
     )
     if result.success?
       flash[:success] = "Payment Successful. Check your fortune!"
-      session[:transaction_token] = SecureRandom.hex(16)
+      ENV['transaction_token'] = SecureRandom.hex(16)
       redirect_to guidances_lookup_cards_path
     else
       flash[:error] = "Payment failed. Please try again."
@@ -33,11 +33,11 @@ class GuidancesController < ApplicationController
   end
 
   def show
-    redirect_back(fallback_location: root_path) and return if params['birthday'].blank?
+    redirect_back(fallback_location: "#{params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank?
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     @@birthdate = @birthday.id
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
-    session[:transaction_token] = nil
+    ENV.delete('transaction_token')
   end
 
   def daily_card
