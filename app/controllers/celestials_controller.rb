@@ -16,46 +16,36 @@ class CelestialsController < ApplicationController
   end
 
   def create
-    @celestial = Celestial.new celestial_params
+    @celestial = Celestial.new(celestial_params)
     @celestial.member = current_member
 
-    respond_to do |format|
-      if @celestial.save
-        format.html { redirect_to @celestial.birthday }
-        format.json { render :show, status: :created, location: @celestial }
-      else
-        format.html { render :new }
-        format.json { render json: @celestial.errors, status: :unprocessable_entity }
-      end
+    if @celestial.save
+      redirect_to @celestial.birthday, notice: 'Celestial was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @celestial.update celestial_params
-        format.html { redirect_to @celestial.birthday }
-        format.json { render :show, status: :ok, location: @celestial }
-      else
-        format.html { render :edit }
-        format.json { render json: @celestial.errors, status: :unprocessable_entity }
-      end
+    if @celestial.update(celestial_params)
+      redirect_to @celestial.birthday, notice: 'Celestial was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @celestial.destroy
-    respond_to do |format|
-      format.html { redirect_to current_member.birthday }
-      format.json { head :no_content }
-    end
+    redirect_to current_member.birthday, notice: 'Celestial was successfully destroyed.'
   end
 
   private
-    def set_celestial
-      @celestial = Celestial.find params[:id]
-    end
 
-    def celestial_params
-      params.require(:celestial).permit :birthday_id, :name
-    end
+  def set_celestial
+    @celestial = Celestial.find(params[:id])
+  end
+
+  def celestial_params
+    params.require(:celestial).permit(:birthday_id, :name)
+  end
 end

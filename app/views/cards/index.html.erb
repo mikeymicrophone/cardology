@@ -1,7 +1,7 @@
 <% @cards.each do |card| %>
   <%= div_for card do %>
     <%= card.name %>
-    <%= image_tag card.image, :class => 'image_gallery' %>
+    <%= image_tag card.image.url, :class => 'image_gallery' %>
     <%= link_to 'edit', edit_card_path(card) %>
   <% end %>
 <% end %>
